@@ -904,10 +904,12 @@ var cron_aliases = {
 	sat: 6
 };
 var cron_alias_re = new RegExp("\\b(" + hash_keys_to_array(cron_aliases).join('|') + ")\\b", "g");
+console.log("REGEX: ", cron_alias_re);
 
 function parse_crontab_part(timing, raw, key, min, max, rand_seed) {
 	// parse one crontab part, e.g. 1,2,3,5,20-25,30-35,59
 	// can contain single number, and/or list and/or ranges and/or these things: */5 or 10-50/5
+	console.log("REGEX: ", cron_alias_re);
 	if (raw == '*') { return; } // wildcard
 	if (raw == 'h') {
 		// unique value over accepted range, but locked to random seed
